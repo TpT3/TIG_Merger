@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIG Merger</title>
+</head>
+
+<body>
+    <script>
+        const sample = [3, 627471, [["ss4g99xs8", "Name", 0, [
+            ["0"], [], [], [], [], [], [], [], [], [], [], [], [], []
+        ]]]]
+        mergeLevel = () => {
+            let current;
+            const parts = [];
+            const sorted = [
+                [], [], [], [], [], [], [], [], [], [], [], [], []
+            ];
+
+            let result = sample;
+
+            //input
+            result[2][0][1] = prompt("Enter final level name");
+
+            while (true) {
+                current = JSON.parse(prompt(`Enter part ${parts.length + 1} (Cancel to finish)`));
+
+                if (current != null) {
+                    current[2][0][3].shift()
+                    parts.push(current[2][0][3]);
+                } else break;
+            }
+
+            //sort
+            parts.forEach(part => {
+                for (let i = 0; i < part.length; i++) {
+                    sorted[i] = sorted[i].concat(part[i]);
+                }
+            });
+
+            //fill
+            for (let i = 0; i < sorted.length; i++) {
+                result[2][0][3][i + 1] = sorted[i];
+            }
+
+            //output
+            alert("The script cannot copy the level. Do that from console, please");
+            console.log(JSON.stringify(result));
+            return JSON.stringify(result);
+
+        }
+
+    </script>
+    <button style="text-align: center;" onclick="mergeLevel()">Merge your Level</button>
+</body>
+
+</html>
