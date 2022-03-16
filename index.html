@@ -6,63 +6,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TIG Merger</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <script>
-        const sample = [3, 627471, [["ss4g99xs8", "Name", 0, [
-            ["0"], [], [], [], [], [], [], [], [], [], [], [], [], []
-        ]]]]
+    <div id="content">
+        <h2>Merge your level</h2>
 
-        mergeLevel = () => {
-            let current;
-            const parts = [];
-            const sorted = [
-                [], [], [], [], [], [], [], [], [], [], [], [], []
-            ];
+        <div>
+            <p>Name:</p><input type="text" id='name'>
+        </div><br><br>
 
-            let result = sample;
+        <div id='parts'></div>
+        <button style="text-align: center;" onclick="addPart()">Add Part</button>
 
-            //input
-            result[2][0][1] = prompt("Enter final level name");
+        <div id='finish'><br><br>
+            <button style="text-align: center;" onclick="merge()">Merge</button>
+            <button style="text-align: center;" onclick="clipboardCopy()">Copy your result</button>
+        </div>
 
-            while (true) {
-                current = JSON.parse(prompt(`Enter part ${parts.length + 1} (Cancel to finish)`));
+        <p id="credit">Made by PopDash (thanks Eimaen)</p>
+    </div>
 
-                if (current != null) {
-
-                    result[0] = current[0];
-                    result[1] = current[1];
-                    result[2][0][0] = current[2][0][0];
-                    result[2][0][2] = current[2][0][2];
-                    result[2][0][3][0] = current[2][0][3][0];
-
-                    current[2][0][3].shift()
-                    parts.push(current[2][0][3]);
-                } else break;
-            }
-
-            //sort
-            parts.forEach(part => {
-                for (let i = 0; i < part.length; i++) {
-                    sorted[i] = sorted[i].concat(part[i]);
-                }
-            });
-
-            //fill
-            for (let i = 0; i < sorted.length; i++) {
-                result[2][0][3][i + 1] = sorted[i];
-            }
-
-            //output
-            alert("The script cannot copy the level. Do that from console (F12), please");
-            console.log(JSON.stringify(result));
-            return JSON.stringify(result);
-
-        }
-
-    </script>
-    <button style="text-align: center;" onclick="mergeLevel()">Merge your Level</button>
+    <script src="script.js"></script>
+    <script src="processing.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,48 @@
+body {
+    background-color: rgb(32, 92, 44);
+    font-family: Verdana, sans-serif;
+}
+
+#content{
+    text-align: center;
+}
+
+
+button {
+    border-style: none;
+    border-radius: 7px;
+    font-size: medium;
+    padding: 12px;
+    font-family: Verdana, sans-serif;
+    background-color: rgb(142, 238, 128);
+}
+
+p, h2 {
+    color: white;
+}
+
+#credit {
+    font-size: small;
+}
+
+#important {
+    color: rgb(21, 255, 0);
+}
+
+textarea {
+    font-family: Verdana, sans-serif;
+    padding-top: 10px;
+    outline: none;
+    resize: vertical;
+    overflow: auto;
+    border-radius: 7px;
+}
+
+input {
+    font-family: Verdana, sans-serif;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    border-style: none;
+    border-radius: 7px;
+}
