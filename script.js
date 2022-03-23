@@ -14,32 +14,34 @@ addPart = () => {
 
 
 merge = () => {
-    let name = document.getElementById('name').value;
-    let inputParts = [];
+    try {
+        let name = document.getElementById('name').value;
+        let inputParts = [];
 
-    let partNum = 1;
-    while (true) {
-        const currentPart = document.getElementById('part' + partNum);
-        if (currentPart != null) {
-            inputParts.push(JSON.parse(currentPart.value));
-            partNum++;
-        } else break;
+        let partNum = 1;
+        while (true) {
+            const currentPart = document.getElementById('part' + partNum);
+            if (currentPart != null) {
+                inputParts.push(JSON.parse(currentPart.value));
+                partNum++;
+            } else break;
+        }
+
+        finalLevel = m.mergeMain(name, inputParts);
+        outputText("Level is merged, now copy it.", "rgb(21, 255, 0)");
+
+    } catch (e) {
+        outputText(e + ", check your parts", "red");
     }
-
-    finalLevel = m.mergeMain(name, inputParts);
-
-    const currentState = finish.innerHTML;
-    finish.innerHTML = `${currentState}
-    <p id="important">Level is merged, now copy it.</p>
-    `;
 
 }
 
 clipboardCopy = () => {
     navigator.clipboard.writeText(finalLevel);
+    outputText("Done!", "rgb(21, 255, 0)");
+}
 
-    const currentState = finish.innerHTML;
-    finish.innerHTML = `${currentState}
-    <p id="important">Done!</p>
-    `;
+const logs = document.getElementById('logs');
+outputText = (text, color) => {
+    logs.innerHTML = `<p id="important" style="color:${color};">${text}</p>`;
 }

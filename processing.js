@@ -33,9 +33,7 @@ let Algorythm = function () {
 
         //sort
         partsS.forEach(part => {
-            for (let i = 0; i < part.length; i++) {
-                sorted[i] = sorted[i].concat(part[i]);
-            }
+            for (let i = 0; i < part.length; i++) sorted[i].push(...part[i]);
         });
 
         //fill

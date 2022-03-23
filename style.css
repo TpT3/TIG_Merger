@@ -25,10 +25,6 @@ p, h2 {
     font-size: small;
 }
 
-#important {
-    color: rgb(21, 255, 0);
-}
-
 textarea {
     font-family: Verdana, sans-serif;
     padding-top: 10px;
